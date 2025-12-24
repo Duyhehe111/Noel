@@ -143,6 +143,24 @@
     </div>
 
     <script type="module">
+        function preloadPhotos() {
+    const loader = new THREE.TextureLoader();
+    const photos = [
+        'photo1.jpg',
+        'photo2.jpg',
+        'photo3.jpg',
+        'photo4.jpg',
+        'photo5.jpg'
+    ];
+
+    photos.forEach(src => {
+        loader.load(src, (texture) => {
+            texture.colorSpace = THREE.SRGBColorSpace;
+            addPhotoToScene(texture);
+        });
+    });
+}
+
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
         import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
